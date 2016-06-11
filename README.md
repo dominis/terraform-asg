@@ -2,6 +2,7 @@
 
 ## This module is not production ready
 
+```hcl
 module "test-asg" {
   source                      = "github.com/dominis/terraform-asg"
   region                      = "us-west-1"
@@ -14,3 +15,4 @@ module "test-asg" {
   minimum_number_of_instances = "2"
   rolling_update_batch_size   = "2"
 }
+```
