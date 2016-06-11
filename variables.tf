@@ -12,10 +12,6 @@ variable "private_subnets" {}
 
 variable "ami_id" {}
 
-variable "instance_count" {
-  default = "1"
-}
-
 variable "instance_type" {
   default = "t2.medium"
 }
@@ -32,6 +28,6 @@ variable "number_of_instances" {
   default = 2
 }
 
-variable "rolling_update_bitch_size" {
+variable "rolling_update_batch_size" {
   default = 1
 }
