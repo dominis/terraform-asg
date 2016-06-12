@@ -21,8 +21,8 @@ resource "aws_cloudformation_stack" "autoscaling_group" {
     "Asg": {
       "Type": "AWS::AutoScaling::AutoScalingGroup",
       "Properties": {
-        "AvailabilityZones": ["${replace(replace(split(",", var.availability_zones), "/(^B780FFEC-B661-4EB8-9236-A01737AD98B6|B780FFEC-B661-4EB8-9236-A01737AD98B6$)/", ""), "B780FFEC-B661-4EB8-9236-A01737AD98B6", "\", \"")}"],
-        "VPCZoneIdentifier": ["${replace(replace(split(",", var.private_subnets), "/(^B780FFEC-B661-4EB8-9236-A01737AD98B6|B780FFEC-B661-4EB8-9236-A01737AD98B6$)/", ""), "B780FFEC-B661-4EB8-9236-A01737AD98B6", "\", \"")}"],
+        "AvailabilityZones": "[ ${join(", ", formatlist("\\"%s\\"", split(",", var.availability_zones)))} ]"
+        "VPCZoneIdentifier": "[ ${join(", ", formatlist("\\"%s\\"", split(",", var.private_subnets)))} ]"
         "LaunchConfigurationName": "${aws_launch_configuration.launch_config.name}",
         "MaxSize": "${var.maximum_number_of_instances}",
         "MinSize": "${var.minimum_number_of_instances}",
