@@ -18,10 +18,11 @@ resource "aws_cloudformation_stack" "autoscaling_group" {
   template_body = <<EOF
 {
   "Resources": {
-    "tfasg": {
+    "Asg": {
       "Type": "AWS::AutoScaling::AutoScalingGroup",
       "Properties": {
         "AvailabilityZones": ["${split(",", var.availability_zones)}"],
+        "VPCZoneIdentifier": ["${split(",", var.private_subnets)}"],
         "LaunchConfigurationName": "${aws_launch_configuration.launch_config.name}",
         "MaxSize": "${var.maximum_number_of_instances}",
         "MinSize": "${var.minimum_number_of_instances}",
@@ -43,6 +44,13 @@ resource "aws_cloudformation_stack" "autoscaling_group" {
           "PauseTime": "PT0S"
         }
       }
+    }
+  }
+},
+  "Outputs": {
+    "AsgName": {
+      "Description": "The name of the auto scaling group",
+       "Value": {"Ref": "Asg"}
     }
   }
 }
