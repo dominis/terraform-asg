@@ -18,7 +18,7 @@ resource "aws_cloudformation_stack" "autoscaling_group" {
   template_body = <<EOF
 {
   "Resources": {
-    "${var.name}": {
+    "tfasg": {
       "Type": "AWS::AutoScaling::AutoScalingGroup",
       "Properties": {
         "AvailabilityZones": ["${split(",", var.availability_zones)}"],
@@ -49,7 +49,7 @@ resource "aws_cloudformation_stack" "autoscaling_group" {
   "Outputs": {
     "AsgName": {
       "Description": "The name of the auto scaling group",
-       "Value": {"Ref": "${var.name}"}
+       "Value": {"Ref": "tfasg"}
     }
   }
 }
