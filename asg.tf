@@ -3,7 +3,7 @@ resource "aws_launch_configuration" "launch_config" {
 
   image_id        = "${var.ami_id}"
   instance_type   = "${var.instance_type}"
-  key_name        = "${aws_key_pair.dummy.name}"
+  key_name        = "${aws_key_pair.dummy.key_name}"
   security_groups = ["${aws_security_group.asg-node.id}"]
 
   lifecycle {
