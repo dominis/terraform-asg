@@ -49,7 +49,7 @@ resource "aws_cloudformation_stack" "autoscaling_group" {
   "Outputs": {
     "AsgName": {
       "Description": "The name of the auto scaling group",
-       "Value": {"Ref": "${var.name}"}
+       "Value": {"Ref": "wtf"}
     }
   }
 }
