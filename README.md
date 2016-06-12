@@ -5,6 +5,7 @@
 ```hcl
 module "test-asg" {
   source                      = "github.com/dominis/terraform-asg"
+  name                        = "test-asg"
   region                      = "us-west-1"
   vpc_id                      = "vpc-asd3sadf"
   availability_zones          = "us-west-1a,us-west-1c"
