@@ -60,7 +60,7 @@ resource "aws_security_group" "asg-node" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  vpc_id = "${var.vpd_id}"
+  vpc_id = "${var.vpc_id}"
 
   tags {
     Name = "${var.name}-asg-node-sg"
